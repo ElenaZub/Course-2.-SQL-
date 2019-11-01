@@ -6,7 +6,7 @@ namespace SQL_task
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }

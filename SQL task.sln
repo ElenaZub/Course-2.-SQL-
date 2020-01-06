@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQL task", "SQL task\SQL ta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binding_Task1", "Binding_Task1\Binding_Task1.csproj", "{0FBD387E-0746-4ADC-890F-78DF17A7EE79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binding_Task1_2", "Binding_Task2\Binding_Task1_2.csproj", "{CAC6A0CF-B065-4D7C-BF57-9FEB0C54BC46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0FBD387E-0746-4ADC-890F-78DF17A7EE79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FBD387E-0746-4ADC-890F-78DF17A7EE79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FBD387E-0746-4ADC-890F-78DF17A7EE79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC6A0CF-B065-4D7C-BF57-9FEB0C54BC46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC6A0CF-B065-4D7C-BF57-9FEB0C54BC46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC6A0CF-B065-4D7C-BF57-9FEB0C54BC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC6A0CF-B065-4D7C-BF57-9FEB0C54BC46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,28 @@
+﻿<Window x:Class="Layout_Task2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Layout_Task2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.9*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" >
+            <Button x:Name="Next_Button" Content="Next" FontSize="20" Margin="5"/>
+            <Button x:Name="Prev_Button" Content="Prev" FontSize="20" Margin="5"/>
+            <CheckBox x:Name="IsStreched" Content="Растянуть" FontSize="20" Margin="5" Checked="CheckBox_Checked" Unchecked="IsStreched_Unchecked"/>
+        </StackPanel>
+        <Button Grid.Column="0" Grid.Row="1" Content="Cancel" FontSize="20" Margin="5"/>
+        <TextBox Grid.Row="0" Grid.Column="1" FontSize="20" TextWrapping="Wrap" Text="Платформа .NET принесла с собой небольшую лавину новых технологий. Появился совершенно новый способ написания веб-приложений (ASP.NET), совершенно новый способ подключения к базам данных (ADO.NET), новые безопасные к типам языки (C# и VB.NET) и управляемая исполняющая среда (CLR). Не последнее место занимала и технология Windows Forms — библиотека классов для построения Windows-приложений.С годами в Microsoft разработали многочисленные инструменты для создания пользовательского интерфейса (C/C++/Windows API, VB6, MFC и т.д.), предназначенные для построения настольных приложений. Каждый из этих программных инструментов предлагает кодовую базу для представления основных аспектов приложения с графическим интерфейсом, включая главные окна, диалоговые окна, элементы управления, системы меню и т.п. В начальном выпуске платформы .NET API-интерфейс Windows Forms быстро стал предпочтительной моделью разработки пользовательских интерфейсов, благодаря его простой, но очень мощной объектной модели.">
+        </TextBox>
+    </Grid>
+</Window>

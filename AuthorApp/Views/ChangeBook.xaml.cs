@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace AuthorApp
+namespace AuthorApp.Views
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for ChangeBook.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class ChangeBook : Window
     {
-        public Window1()
+        public ChangeBook()
         {
             InitializeComponent();
         }

@@ -57,18 +57,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Tools\CustomCommands.cs" />
     <Compile Include="Model\Author.cs" />
     <Compile Include="Model\Book.cs" />
+    <Compile Include="Model\Country.cs" />
     <Compile Include="Model\EntityBase.cs" />
-    <Compile Include="Model\Languages.cs" />
-    <Compile Include="Views\AuthorChange.xaml.cs">
-      <DependentUpon>AuthorChange.xaml</DependentUpon>
+    <Compile Include="Model\Language.cs" />
+    <Compile Include="Views\ChangeAuthor.xaml.cs">
+      <DependentUpon>ChangeAuthor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ChangeBook.xaml.cs">
+      <DependentUpon>ChangeBook.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Details.xaml.cs">
       <DependentUpon>Details.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -82,15 +84,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AuthorChange.xaml">
+    <Page Include="Views\ChangeAuthor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChangeBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Details.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,8 +123,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tools\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

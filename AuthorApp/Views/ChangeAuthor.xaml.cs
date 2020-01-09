@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace AuthorApp.Views
 {
     /// <summary>
-    /// Interaction logic for AuthorChange.xaml
+    /// Interaction logic for ChangeAuthor.xaml
     /// </summary>
-    public partial class AuthorChange : Window
+    public partial class ChangeAuthor : Window
     {
-        public AuthorChange()
+        public ChangeAuthor()
         {
             InitializeComponent();
         }

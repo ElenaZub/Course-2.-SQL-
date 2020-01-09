@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace AuthorApp.Model
 {
-    enum Languages
+    enum Country
     {
-
+        Ukraine = 1, 
+        Russia,
+        USA
     }
 }

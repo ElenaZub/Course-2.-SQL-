@@ -3,13 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AuthorApp.Views"
+        xmlns:tools="clr-namespace:AuthorApp.Tools"
+        xmlns:local="clr-namespace:AuthorApp.Views"      
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="480" Width="600">
+    <Window.CommandBindings>
+        <CommandBinding Command="New" Executed="New_Executed"/>
+        <CommandBinding Command="Delete" Executed="Delete_Executed" CanExecute="Delete_CanExecute"/>
+        <!--<CommandBinding Command="tools:CustomCommands.Change" Executed="ExecutedCustom_Command" CanExecute="CanExecuteCustom_Command" />-->
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1.1*"/>
             <RowDefinition Height="0.22*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="0.25*"/>
@@ -31,10 +37,10 @@
         </Grid.ColumnDefinitions>
         <Menu HorizontalAlignment="Left" Margin="5" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan = "2" VerticalAlignment="Top">
             <MenuItem Header="File">
-                <MenuItem Header="New Author"/>
-                <MenuItem Header="New Book"/>
-                <MenuItem Header="Remove Author"/>
-                <MenuItem Header="Remove Book"/>
+                <MenuItem Header="New Author" Command="New" x:Name="NewAuthorMenu"/>
+                <MenuItem Header="New Book" Command="New" x:Name="NewBookMenu"/>
+                <MenuItem Header="Remove Author" Command="Delete" x:Name="DeleteAuthorMenu"/>
+                <MenuItem Header="Remove Book" Command="Delete" x:Name="DeleteBookMenu"/>
             </MenuItem>
             <MenuItem Header="Edit">
                 <MenuItem Header="Edit Author"/>
@@ -42,23 +48,22 @@
             </MenuItem>
         </Menu>
 
-        <ListView x:Name="AuthorListView" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="3" Margin="5" ItemsSource="{Binding}">
-        </ListView>
-        <Button Grid.Row="5" Grid.Column="0" Margin="2" Content="New"/>
-        <Button Grid.Row="5" Grid.Column="1" Margin="2" Content="Change"/>
-        <Button Grid.Row="5" Grid.Column="2" Margin="2" Content="Delete"/>
+        <ListView x:Name="AuthorListView" Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="3" Margin="5" ItemsSource="{Binding}"/>
+        <Button x:Name="NewAuthorButton" Grid.Row="5" Grid.Column="0" Margin="3" Content="New" FontSize="10" Command="New"/>
+        <Button Grid.Row="5" Grid.Column="1" Margin="3" Content="Change" FontSize="10" Command="tools:CustomCommands.Change"/>
+        <Button Grid.Row="5" Grid.Column="2" Margin="3" Content="Delete" FontSize="10" Command="Delete" x:Name="DeleteAuthorButton"/>
 
-        <Label Content="Books" Grid.Column="3" Grid.Row="2" Margin="3, 0" FontSize="10"/>
-        <DataGrid x:Name="DataGrid" Grid.Column="3" Grid.Row="3"  Grid.ColumnSpan ="9" Margin="10" AutoGenerateColumns="False" ItemsSource="{Binding ElementName=AuthorListView, Path=SelectedItem.BooksList}">
+        <Label Content="Books" Grid.Column="4" Grid.Row="2" FontSize="10"/>
+        <DataGrid x:Name="BookDataGrid" Grid.Column="3" Grid.Row="3"  Grid.ColumnSpan ="9" Margin="10" AutoGenerateColumns="False" ItemsSource="{Binding ElementName=AuthorListView, Path=SelectedItem.BooksList}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="#" Binding="{Binding Id}"/>
-                <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
-                <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=dd/mm/yyyy}"/>
+                <DataGridTextColumn Header="#" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="0.5*" />
+                <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=dd/mm/yyyy}" Width="0.8*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Column="7" Grid.Row="4" Content="New" Margin="2,3"/>
-        <Button Grid.Column="8" Grid.Row="4" Content="Change" Margin="2, 3"/>
-        <Button Grid.Column="9" Grid.Row="4" Content="Delete" Margin="2, 3"/>
+        <Button Grid.Column="7" Grid.Row="4" Content="New" Margin="3" FontSize="10" Command="New" x:Name="NewBookButton"/>
+        <Button Grid.Column="8" Grid.Row="4" Content="Change" Margin="3" FontSize="10" Command="tools:CustomCommands.Change"/>
+        <Button Grid.Column="9" Grid.Row="4" Content="Delete" Margin="3" FontSize="10" Command="Delete" x:Name="DeleteBookButton"/>
 
         <local:Details Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="9" DataContext="{Binding ElementName=AuthorListView, Path=SelectedItem}"/>
     </Grid>

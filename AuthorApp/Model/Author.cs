@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace AuthorApp.Model
 {
-    public class Author
+    public class Author : EntityBase
     {        
         public String FirstName { get; set; }
 
@@ -16,17 +16,18 @@ namespace AuthorApp.Model
 
         public DateTime BirthDate { get; set; }
 
-        public String Country { get; set; }
+        public Country Country { get; set; }
 
-        public String Language { get; set; }
+        public Language Language { get; set; }
 
         public String PlaceOfBirth { get; set; }
 
         public ObservableCollection<Book> BooksList { get; set; }
 
-        public Author(string firstName, string lastName, DateTime birthDate, string country, string language, string placeOfBirth, ObservableCollection<Book> bookList)
+        public Author(bool isNew, string firstName, string lastName, DateTime birthDate, Country country, Language language, string placeOfBirth, ObservableCollection<Book> bookList)
             :base() 
         {
+            //this.IsNew = isNew;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.BirthDate = birthDate;
@@ -34,6 +35,12 @@ namespace AuthorApp.Model
             this.Language = language;
             this.PlaceOfBirth = placeOfBirth;
             this.BooksList = bookList;
+        }
+
+        public Author()
+            : base()
+        {
+            this.BooksList = new ObservableCollection<Book>();
         }
 
         public override string ToString()

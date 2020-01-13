@@ -35,56 +35,52 @@ namespace AuthorApp
         {
             InitializeComponent();
 
-            var commandBinding = new CommandBinding(CustomCommands.Change);
-            commandBinding.CanExecute += CommandBinding_CanExecute;
-            commandBinding.Executed += CommandBinding_Executed;
-            this.CommandBindings.Add(commandBinding);
-
             this.AuthorsList = new ObservableCollection<Author>();
             this.BookList = new ObservableCollection<Book>();
             this.BookListSecond = new ObservableCollection<Book>();
 
             this.AuthorListView.DataContext = this.AuthorsList;
 
-            BookList.Add(new Book("Title", 20, new DateTime(2010, 2, 2)));
-            BookListSecond.Add(new Book("Some 1 book", 500, new DateTime(2001, 12, 2)));
-            BookListSecond.Add(new Book("Some 2 book", 600, new DateTime(2001, 12, 2)));
-            BookListSecond.Add(new Book("Some 3 book", 700, new DateTime(2001, 11, 2)));
+            AuthorsList.Add(new Author(false, "Mark", "Twain", DateTime.Today, Model.Country.USA, Model.Language.English, "Florida, Missouri", BookList));
+            AuthorsList.Add(new Author(false, "O.", "Henry", DateTime.Today, Model.Country.USA, Model.Language.English, "Kharkiv", BookListSecond));
 
-            AuthorsList.Add(new Author("Mark", "Twain", DateTime.Today, "USA", "English", "Florida, Missouri", BookList));
-            AuthorsList.Add(new Author("O.", "Henry", DateTime.Today, "USA", "English", "Kharkiv", BookListSecond));
+            BookListSecond.Add(new Book(false, "Some 1 book", 500, new DateTime(2001, 12, 2)));
+            BookListSecond.Add(new Book(false, "Some 2 book", 600, new DateTime(2001, 12, 2)));
+            BookListSecond.Add(new Book(false, "Some 3 book", 700, new DateTime(2001, 11, 2)));
 
-            BookList.Add(new Book("Title", 20, new DateTime(2010, 02, 02)));
-        }
-
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
+            BookList.Add(new Book(false, "Title 1", 20, DateTime.Today));
+            BookList.Add(new Book(false, "Title 2", 20, DateTime.Today.AddDays(-2)));
         }
 
         private void New_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            int selectedAuthorId = AuthorListView.SelectedIndex;
             var source = e.Source;
-            Debug.WriteLine(source);
-            string newAuthor = "New Author";
-            string newBook = "New Book";
 
-            if((source as Button).Name == "NewAuthorMenu" || (source as Button).Name == "NewAuthorButton")
+
+            if ((source == NewAuthorMenu) || (source  == NewAuthorButton))
             {
-                ChangeAuthor changeAuthor = new ChangeAuthor();
-                changeAuthor.DataContext = newAuthor;
-                changeAuthor.Show();
+                Author addedAuthor = new Author();
+                ChangeAuthor addAuthor = new ChangeAuthor(addedAuthor);
+
+                var res = addAuthor.ShowDialog();
+
+                if (res == true)
+                {
+                    addedAuthor.IsNew = false;
+                    this.AuthorsList.Add(addedAuthor);
+                }
             }
             else if (source == NewBookMenu || source == NewBookButton)
             {
-                ChangeBook changeBook = new ChangeBook();
-                changeBook.DataContext = newBook;
-                changeBook.Show();
+                Book addedBook = new Book();
+                ChangeBook addBook = new ChangeBook(addedBook);
+
+                var res = addBook.ShowDialog();
+
+                if (res == true)
+                    addedBook.IsNew = false;
+                    this.AuthorsList[selectedAuthorId].BooksList.Add(addedBook);
             }
         }
 
@@ -125,28 +121,119 @@ namespace AuthorApp
 
         private void ExecutedCustom_Command(object sender, ExecutedRoutedEventArgs e)
         {
+            var selectedBook = this.BookDataGrid.SelectedItem as Book;
+
+            var selectedAuthor = this.AuthorListView.SelectedItem as Author;
+            var authorIndex = this.AuthorListView.SelectedIndex;
+            this.AuthorsList[authorIndex].IsNew = false;
+
+            if (e.Source is Button)
+            { 
+                var source = e.Source as Button;
+                Debug.WriteLine(source.Name);
+
+                if (source.Name == "ChangeAuthorButton")
+                {
+                    ChangeAuthor changeAuthor = new ChangeAuthor(selectedAuthor);
+
+                    changeAuthor.ShowDialog();
+                    this.AuthorListView.Items.Refresh();
+                    this.BookDataGrid.Items.Refresh();
+
+                }
+                else if (source.Name == "ChangeBookButton")
+                {
+                    ChangeBook changeBook = new ChangeBook(selectedBook);
+
+                    changeBook.ShowDialog();
+                    //this.AuthorListView.Items.Refresh();
+                    this.AuthorListView.Items.Refresh();
+                    this.BookDataGrid.Items.Refresh();
+                }
+            }
+            if (e.Source is MenuItem)
+            {
+                var source = e.Source as MenuItem;
+                Debug.WriteLine(source.Name);
+                if (source.Name == "ChangeAuthorMenu")
+                {
+                    ChangeAuthor changeAuthor = new ChangeAuthor(selectedAuthor);
+
+                    changeAuthor.ShowDialog();
+                    this.AuthorListView.Items.Refresh();
+                    this.BookDataGrid.Items.Refresh();
+                }
+                else if (source.Name == "ChangeBookMenu")
+                {
+                    ChangeBook changeBook = new ChangeBook(selectedBook);
+
+                    changeBook.ShowDialog();
+                    //this.AuthorListView.Items.Refresh();
+                    this.AuthorListView.Items.Refresh();
+                    this.BookDataGrid.Items.Refresh();
+                }
+            }
         }
 
         private void CanExecuteCustom_Command(object sender, CanExecuteRoutedEventArgs e)
         {
+            var source = e.Source;
+
+            if (source == ChangeAuthorButton)
+            {
+                if (this.AuthorListView.SelectedItem == null)
+                    e.CanExecute = false;
+                else
+                    e.CanExecute = true;
+            }
+            if (source == ChangeAuthorMenu)
+            {
+                if (this.AuthorListView.SelectedItem == null)
+                    e.CanExecute = false;
+                else
+                    e.CanExecute = true;
+            }
+            if (source == ChangeBookButton)
+            {
+                if (this.BookDataGrid.SelectedItem == null)
+                    e.CanExecute = false;
+                else
+                    e.CanExecute = true;
+            }
+            if (source == ChangeBookMenu)
+            {
+                if (this.BookDataGrid.SelectedItem as Book== null)
+                    e.CanExecute = false;
+                else
+                    e.CanExecute = true;
+
+            }
         }
 
         private void Delete_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            int selectedAuthorId = AuthorListView.SelectedIndex;
-
             var source = e.Source;
 
-            if (source == DeleteAuthorButton || source == DeleteAuthorMenu)
+            if (source == DeleteAuthorButton)
             {
-                if (AuthorsList.Count != 0)
-                    AuthorsList.RemoveAt(selectedAuthorId);
+                if (this.AuthorsList.Count != 0)
+                    this.AuthorsList.RemoveAt(this.AuthorListView.SelectedIndex);
             }
-            else if (source == DeleteBookButton || source == DeleteBookMenu)
+            if (source == DeleteAuthorMenu)
             {
-                var selectedBook = BookDataGrid.SelectedIndex;
-                if (AuthorsList[selectedAuthorId].BooksList.Count != 0)
-                    AuthorsList[selectedAuthorId].BooksList.RemoveAt(selectedBook);
+                if (this.AuthorsList.Count != 0)
+                    this.AuthorsList.RemoveAt(this.AuthorListView.SelectedIndex);
+            }
+            if (source == DeleteBookButton)
+            {
+                if (this.AuthorsList[this.AuthorListView.SelectedIndex].BooksList.Count != 0)
+                    this.AuthorsList[this.AuthorListView.SelectedIndex].BooksList.RemoveAt(this.BookDataGrid.SelectedIndex);
+            }
+
+            if (source == DeleteBookMenu)
+            {
+                if (this.AuthorsList[this.AuthorListView.SelectedIndex].BooksList.Count != 0)
+                    this.AuthorsList[this.AuthorListView.SelectedIndex].BooksList.RemoveAt(this.BookDataGrid.SelectedIndex);
             }
         }
     }

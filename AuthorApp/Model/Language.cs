@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AuthorApp.Model
 {
-    enum Language
+    public enum Language
     {
-        Russian = 1,
-        English,
-        Ukrainian
+        Russian = 0,
+        English = 1,
+        Ukrainian = 2
     }
 }

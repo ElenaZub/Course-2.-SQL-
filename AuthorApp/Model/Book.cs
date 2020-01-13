@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuthorApp.Model
 {
-    public class Book: EntityBase
+    public class Book : EntityBase
     {
         public String Title { get; set; }
 
@@ -14,12 +14,16 @@ namespace AuthorApp.Model
 
         public DateTime Date { get; set; }
 
-        public Book(string title, decimal cost, DateTime date)
-            :base()
+        public Book(bool isNew, string title, decimal cost, DateTime date)
+            : base()
         {
+            //this.IsNew = isNew;
             this.Title = title;
             this.Cost = cost;
             this.Date = date;
         }
+
+        public Book()
+            : base(){}
     }
 }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AuthorApp.Model
 {
-    enum Country
+    public enum Country
     {
-        Ukraine = 1, 
-        Russia,
-        USA
+        Ukraine = 0, 
+        Russia = 1,
+        USA = 2
     }
 }

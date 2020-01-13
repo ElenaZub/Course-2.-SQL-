@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -63,6 +65,8 @@
     <Compile Include="Model\Country.cs" />
     <Compile Include="Model\EntityBase.cs" />
     <Compile Include="Model\Language.cs" />
+    <Compile Include="Tools\IsNewToTextConverter.cs" />
+    <Compile Include="Tools\LanguageToColorConverter.cs" />
     <Compile Include="Views\ChangeAuthor.xaml.cs">
       <DependentUpon>ChangeAuthor.xaml</DependentUpon>
     </Compile>

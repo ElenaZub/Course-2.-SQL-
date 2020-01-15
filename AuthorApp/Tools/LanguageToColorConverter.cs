@@ -14,16 +14,9 @@ namespace AuthorApp.Tools
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+
             switch ((int)value)       
             {
-                //case Language.English.ToString():
-                //    return new SolidColorBrush(Colors.Blue);
-                //case Language.Russian.ToString():
-                //    return new SolidColorBrush(Colors.Red);
-                //case Language.Ukrainian.ToString():
-                //    return new SolidColorBrush(Colors.Yellow);
-                //default: 
-                //    return new SolidColorBrush(Colors.White);
                 case 0:
                     return new SolidColorBrush(Colors.Blue);
                 case 1:
@@ -31,7 +24,7 @@ namespace AuthorApp.Tools
                 case 2:
                     return new SolidColorBrush(Colors.Yellow);
                 default:
-                    return new SolidColorBrush(Colors.White);
+                   return new SolidColorBrush(Colors.White);
             }
         }
 

@@ -16,7 +16,8 @@ namespace AuthorApp.Tools
             if (value is Author)
             {
                 Author author = value as Author;
-                if (author.IsNew == true)
+
+                if (author.IsNew)
                 {
                     return "New author";
                 }

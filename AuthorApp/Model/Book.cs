@@ -14,16 +14,14 @@ namespace AuthorApp.Model
 
         public DateTime Date { get; set; }
 
-        public Book(bool isNew, string title, decimal cost, DateTime date)
-            : base()
+        public Book(string title, decimal cost, DateTime date, bool isNew  = true)
         {
-            //this.IsNew = isNew;
             this.Title = title;
             this.Cost = cost;
             this.Date = date;
+            this.IsNew = isNew;
         }
 
-        public Book()
-            : base(){}
+        public Book() { }
     }
 }

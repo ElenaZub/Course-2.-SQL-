@@ -24,10 +24,9 @@ namespace AuthorApp.Model
 
         public ObservableCollection<Book> BooksList { get; set; }
 
-        public Author(bool isNew, string firstName, string lastName, DateTime birthDate, Country country, Language language, string placeOfBirth, ObservableCollection<Book> bookList)
+        public Author(string firstName, string lastName, DateTime birthDate, Country country, Language language, string placeOfBirth, ObservableCollection<Book> bookList, bool isNew = true )
             :base() 
         {
-            //this.IsNew = isNew;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.BirthDate = birthDate;
@@ -35,10 +34,10 @@ namespace AuthorApp.Model
             this.Language = language;
             this.PlaceOfBirth = placeOfBirth;
             this.BooksList = bookList;
+            this.IsNew = isNew;
         }
 
         public Author()
-            : base()
         {
             this.BooksList = new ObservableCollection<Book>();
         }

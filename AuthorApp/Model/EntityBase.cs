@@ -16,7 +16,12 @@ namespace AuthorApp.Model
         public EntityBase()
         {
             this.IsNew = true;
-            
+            this.Id = counter++;
+        }
+
+        public void Save()
+        {
+            this.IsNew = false;
         }
     }
 }

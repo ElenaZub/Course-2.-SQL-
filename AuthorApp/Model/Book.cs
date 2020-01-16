@@ -14,12 +14,17 @@ namespace AuthorApp.Model
 
         public DateTime Date { get; set; }
 
-        public Book(string title, decimal cost, DateTime date, bool isNew  = true)
+        public bool IsRead{ get; set; }
+
+        public Language Language { get; set; }
+
+        public Book(string title, decimal cost, DateTime date, bool isNew  = true, Language language=Language.Ukrainian)
         {
             this.Title = title;
             this.Cost = cost;
             this.Date = date;
             this.IsNew = isNew;
+            this.Language = language;
         }
 
         public Book() { }

@@ -4,7 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:tools="clr-namespace:AuthorApp.Tools"
-        xmlns:local="clr-namespace:AuthorApp.Views"      
+        xmlns:local="clr-namespace:AuthorApp.Views"     
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:model="clr-namespace:AuthorApp.Model"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
     <Window.CommandBindings>
@@ -12,6 +14,16 @@
         <CommandBinding Command="Delete" Executed="Delete_Executed" CanExecute="Delete_CanExecute"/>
         <CommandBinding Command="tools:CustomCommands.Change" Executed="Change_Executed" CanExecute="Change_CanExecute" />
     </Window.CommandBindings>
+    <Window.Resources>
+        <ObjectDataProvider
+            x:Key="Languages"
+            MethodName="GetValues"
+            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="model:Language" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
@@ -51,17 +63,34 @@
         <Button  x:Name="DeleteAuthorButton" Grid.Row="5" Grid.Column="2" Margin="3" Content="Delete" FontSize="10" Command="Delete"/>
 
         <Label Content="Books" Grid.Column="4" Grid.Row="2" FontSize="10"/>
-        <DataGrid x:Name="BookDataGrid" Grid.Column="3" Grid.Row="3"  Grid.ColumnSpan ="9" Margin="10" AutoGenerateColumns="False" ItemsSource="{Binding ElementName=AuthorListView, Path=SelectedItem.BooksList,  Mode=TwoWay }">
+        <DataGrid x:Name="BookDataGrid" Grid.Column="3" Grid.Row="3"  Grid.ColumnSpan ="9" Margin="10,10,10,0" AutoGenerateColumns="False" ItemsSource="{Binding ElementName=AuthorListView, Path=SelectedItem.BooksList,  Mode=TwoWay }">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="#" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="0.5*" />
-                <DataGridTextColumn Header="Date" Binding="{Binding Date, StringFormat=dd/MM/yyyy}" Width="0.8*"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="0.4*" />
+                <DataGridTemplateColumn Header="Date" Width="0.3*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Date, StringFormat=dd/MM/yyyy}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Date}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridComboBoxColumn Header="Language" Width="100" SelectedItemBinding="{Binding Language}" ItemsSource="{Binding Source={StaticResource Languages}}"/>
+                <DataGridCheckBoxColumn  Header="Read" Binding="{Binding IsRead}" Width="0.2*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Column="7" Grid.Row="4" Content="New" Margin="3" FontSize="10" Command="New" x:Name="NewBookButton"/>
         <Button Grid.Column="8" Grid.Row="4" Content="Change" Margin="3" FontSize="10" Command="tools:CustomCommands.Change" x:Name="ChangeBookButton" />
         <Button Grid.Column="9" Grid.Row="4" Content="Delete" Margin="3" FontSize="10" Command="Delete" x:Name="DeleteBookButton"/>
-
+        <Separator Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="12" VerticalAlignment="Top" Margin="-1">
+            <Separator.RenderTransform>
+                <ScaleTransform ScaleY="2" />
+            </Separator.RenderTransform>
+        </Separator>
         <local:Details Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="9" DataContext="{Binding ElementName=AuthorListView, Path=SelectedItem, Mode=TwoWay}"/>
     </Grid>
 </Window>

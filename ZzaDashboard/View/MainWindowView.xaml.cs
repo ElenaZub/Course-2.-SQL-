@@ -25,6 +25,7 @@ namespace ZzaDashboard.View
 
         public CustomerEditView()
         {
+            //this.DataContext = new MainWindowViewModel();
             InitializeComponent();
         }
     }

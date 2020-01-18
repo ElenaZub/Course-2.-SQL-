@@ -3,11 +3,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:Data="clr-namespace:Zza.Data;assembly=Zza.Data"
-             xmlns:local="ZzaDashboard.ViewModel"
+             xmlns:local="clr-namespace:ZzaDashboard.ViewModel"
              x:Class="ZzaDashboard.View.CustomerEditView"
              mc:Ignorable="d" Height="Auto" Width="Auto">
     <UserControl.DataContext>
-        <local:MainWindowsViewModel/>
+        <local:MainWindowViewModel/>
     </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>

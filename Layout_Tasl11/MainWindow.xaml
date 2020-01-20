@@ -1,0 +1,103 @@
+﻿<Window x:Class="Layout_Tasl11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Layout_Tasl11"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid>
+        <ComboBox HorizontalAlignment="Stretch" Height="Auto" VerticalAlignment="Top">
+            <ComboBoxItem IsSelected="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="1" Source="images/1.jpg" Width="200" Margin="5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="BMW" FontSize="20" Margin="5"/>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="1" Source="images/2.jpg" Width="200" Margin="5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Audi" FontSize="20" Margin="5"/>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="1" Source="images/3.jpg" Width="200" Margin="5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Ferrari" FontSize="20" Margin="5"/>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="1" Source="images/4.jpg" Width="200" Margin="5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Ford" FontSize="20" Margin="5"/>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="1" Source="images/5.jpg" Width="200" Margin="5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Opel" FontSize="20" Margin="5"/>
+                </Grid>
+            </ComboBoxItem>
+            <ComboBoxItem>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.1*"/>
+                        <RowDefinition Height="0.6*"/>
+                        <RowDefinition Height="0.1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Grid.Row="1" Source="images/6.jpg" Width="200" Margin="5"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Toyata" FontSize="20" Margin="5"/>
+                </Grid>
+            </ComboBoxItem>
+        </ComboBox>
+    </Grid>
+</Window>

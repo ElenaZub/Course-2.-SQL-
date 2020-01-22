@@ -18,6 +18,7 @@ namespace ZzaDashboard.ViewModel
         private ICustomersRepository Repository { get; set; }
 
         public ICommand GetCommand { get; set; }
+
         public MainWindowViewModel()
         {
             if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))

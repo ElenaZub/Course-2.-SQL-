@@ -11,14 +11,14 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="0.35*"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" Grid.Column="0" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="0" Grid.Column="0" AutoGenerateColumns="False" x:Name="EmployeeDataGrid">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID"/>
-                <DataGridTextColumn Header="Name" Width="0.6*"/>
-                <DataGridTextColumn Header="Department" Width="0.6*"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Name" Width="0.6*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Department" Width="0.6*" Binding="{Binding Department}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Column="1" Grid.Row="1">
+        <Grid Grid.Column="1" Grid.Row="1" DataContext="{Binding ElementName = EmployeeDataGrid, Path=SelectedValue}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="0.6*"/>
@@ -29,13 +29,13 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Name" Grid.Column="0" Grid.Row="0"/>
+            <Label Content="Name" Grid.Column="0" Grid.Row="0" />
             <Label Content="Hire date" Grid.Column="0" Grid.Row="1"/>
-            <TextBox Grid.Column="1" Grid.Row="0" Margin="3"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Margin="3"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Margin="3" Text="{Binding Name}"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Margin="3" Text="{Binding HiredDate}"/>
             <Label Content="Department" Grid.Column="2" Grid.Row="0" Margin="10, 0, 0, 0"/>
-            <TextBox Grid.Column="3" Grid.Row="0" Margin="3"/>
-            <CheckBox Content="Is manager" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBox Grid.Column="3" Grid.Row="0" Margin="3" Text="{Binding Department}"/>
+            <CheckBox Content="Is manager" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right" IsChecked="{Binding IsManager}"/>
         </Grid>
     </Grid>
 </Window>

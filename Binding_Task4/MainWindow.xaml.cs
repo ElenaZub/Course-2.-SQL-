@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,15 @@ namespace Binding_Task4
         public MainWindow()
         {
             InitializeComponent();
+
+            ObservableCollection<Employee> employees = new ObservableCollection<Employee>()
+            {
+                new Employee{Name = "Anna Petrova", Department = "GIS", HiredDate = new DateTime(2010/11/04), IsManager = true},
+                new Employee{Name = "Anton Ivanov", Department = "HR", HiredDate = new DateTime(2015/02/04), IsManager = true},
+                new Employee{Name = "Alex Smith", Department = "GIS", HiredDate = new DateTime(2002/01/01), IsManager = false},
+            };
+
+            this.EmployeeDataGrid.ItemsSource = employees;
         }
     }
 }

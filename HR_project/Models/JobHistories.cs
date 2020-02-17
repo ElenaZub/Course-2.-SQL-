@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HRwork.Models
+namespace HR_project.Models
 {
     public class JobHistories
     {
+
         public DateTime StartDate { get; set; }
 
         public int EmployeesId { get; set; }

@@ -7,15 +7,12 @@ namespace HRwork.Models
 {
     public class Countries
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [StringLength(2)]
         public int Id { get; set; }
 
-        [MaxLength(40)]
         public string Name { get; set; }
 
         public Regions Regions { get; set; }
 
-
+        public ICollection<Locations> Locations { get; set; }
     }
 }

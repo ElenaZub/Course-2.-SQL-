@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HRwork.Models
+namespace HR_project.Models
 {
     public class Employees
     {

@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 
-namespace HRwork.Models
+namespace HR_project.Models
 {
     public class HRDBContext : DbContext
     {
@@ -10,11 +9,10 @@ namespace HRwork.Models
         {
         }
 
-
         public DbSet<Countries> Countries { get; set; }
         public DbSet<Departments> Departments { get; set; }
         public DbSet<Employees> Employees { get; set; }
-
+        public DbSet<JobGrades> JobGrades { get; set; }
         public DbSet<JobHistories> JobHistories { get; set; }
         public DbSet<Jobs> Jobs { get; set; }
         public DbSet<Locations> Locations { get; set; }
@@ -22,7 +20,7 @@ namespace HRwork.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Database=HRdb;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Database=DB_HR;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -139,6 +137,10 @@ namespace HRwork.Models
 
             modelBuilder.Entity<Jobs>()
                 .HasKey(jobs => jobs.Id);
+
+            modelBuilder.Entity<Jobs>()
+                .Property(jobs => jobs.Id)
+                .HasMaxLength(10);
 
             modelBuilder.Entity<Jobs>()
                  .Property(jobs => jobs.Id)

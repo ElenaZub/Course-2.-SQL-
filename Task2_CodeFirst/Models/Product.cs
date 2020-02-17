@@ -18,6 +18,6 @@ namespace Task2_CodeFirst.Models
 
         public string Image { get; set; }
 
-        public ICollection<OrderItem> Orders { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }

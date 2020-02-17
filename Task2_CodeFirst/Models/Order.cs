@@ -24,6 +24,6 @@ namespace Task2_CodeFirst.Models
 
         public string  DeleveryZip { get; set; }
 
-        public Customer Customer { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }

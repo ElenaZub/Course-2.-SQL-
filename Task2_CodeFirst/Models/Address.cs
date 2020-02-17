@@ -15,7 +15,5 @@ namespace Task2_CodeFirst.Models
         public string Street { get; set; }
 
         public string Zip { get; set; }
-
-        public Customer Customer { get; set; }
     }
 }

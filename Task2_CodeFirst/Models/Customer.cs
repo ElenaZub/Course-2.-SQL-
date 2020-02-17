@@ -18,8 +18,6 @@ namespace Task2_CodeFirst.Models
 
         public string Email { get; set; }
 
-        public Store Store { get; set; }
-
         public ICollection<Address> Addresses { get; set; }
 
         public ICollection<Order> Orders { get; set; }

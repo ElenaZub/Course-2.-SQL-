@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HR_project.Migrations
 {
-    public partial class intDB : Migration
+    public partial class createDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -98,7 +98,7 @@ namespace HR_project.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 30, nullable: true),
                     ManagersId = table.Column<int>(nullable: false),
-                    LocationsId = table.Column<int>(nullable: false)
+                    LocationsId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,7 +108,7 @@ namespace HR_project.Migrations
                         column: x => x.LocationsId,
                         principalTable: "Locations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -118,8 +118,9 @@ namespace HR_project.Migrations
                     StartDate = table.Column<DateTime>(nullable: false),
                     EmployeesId = table.Column<int>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: false),
-                    JobsId = table.Column<string>(maxLength: 10, nullable: true),
-                    DepartmentsId = table.Column<int>(nullable: false)
+                    DepartmentsId = table.Column<int>(nullable: true),
+                    JobId = table.Column<string>(maxLength: 10, nullable: true),
+                    JobsId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -129,7 +130,7 @@ namespace HR_project.Migrations
                         column: x => x.DepartmentsId,
                         principalTable: "Departments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_JobHistories_Jobs_JobsId",
                         column: x => x.JobsId,

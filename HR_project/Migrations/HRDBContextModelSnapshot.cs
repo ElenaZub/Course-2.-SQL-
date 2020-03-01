@@ -48,7 +48,7 @@ namespace HR_project.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("LocationsId")
+                    b.Property<int?>("LocationsId")
                         .HasColumnType("int");
 
                     b.Property<int>("ManagersId")
@@ -147,15 +147,18 @@ namespace HR_project.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DepartmentsId")
+                    b.Property<int?>("DepartmentsId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("JobsId")
+                    b.Property<string>("JobId")
                         .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
+
+                    b.Property<string>("JobsId")
+                        .HasColumnType("nvarchar(10)");
 
                     b.HasKey("EmployeesId", "StartDate");
 
@@ -247,9 +250,7 @@ namespace HR_project.Migrations
                 {
                     b.HasOne("HR_project.Models.Locations", "Locations")
                         .WithMany("Departments")
-                        .HasForeignKey("LocationsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LocationsId");
                 });
 
             modelBuilder.Entity("HR_project.Models.Employees", b =>
@@ -271,9 +272,7 @@ namespace HR_project.Migrations
                 {
                     b.HasOne("HR_project.Models.Departments", "Departments")
                         .WithMany("JobHistories")
-                        .HasForeignKey("DepartmentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentsId");
 
                     b.HasOne("HR_project.Models.Jobs", "Jobs")
                         .WithMany("JobHistories")

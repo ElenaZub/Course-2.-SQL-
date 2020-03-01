@@ -24,6 +24,8 @@ namespace HR_project.Models
         public int ManagerId { get; set; }
         public Departments Departments { get; set; }
 
+        public string JobsId { get; set; }
+
         public Jobs Jobs { get; set; }
 
         public JobHistories JobHistories { get; set; }

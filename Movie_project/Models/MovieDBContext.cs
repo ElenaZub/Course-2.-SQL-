@@ -1,28 +1,43 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace HR_project.Models
+namespace Movie_project.Models
 {
-    public class HRDBContext : DbContext
+    class MovieDBContext: DbContext
     {
-        public DbSet<Countries> Countries { get; set; }
-        public DbSet<Departments> Departments { get; set; }
-        public DbSet<Employees> Employees { get; set; }
-        public DbSet<JobGrades> JobGrades { get; set; }
-        public DbSet<JobHistories> JobHistories { get; set; }
-        public DbSet<Jobs> Jobs { get; set; }
-        public DbSet<Locations> Locations { get; set; }
-        public DbSet<Regions> Regions { get; set; }
+        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Director> Directors { get; set; }
+        public DbSet<Genres> Genres { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<MovieCast> MovieCasts { get; set; }
+        public DbSet<MovieDirection> MovieDirections { get; set; }
+        public DbSet<MovieGenres> MovieGenres { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Reviewer> Reviewers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Database=HR_FluentAPI;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Database=MovieDB;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Regions>()
-                .HasKey(region => region.Id);
+            modelBuilder.Entity<Actor>()
+                .HasKey(actor => actor.Id);
+
+            modelBuilder.Entity<Actor>()
+                .Property(actor => actor.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Actor>()
+                .Property(actor => actor.FirstName)
+                .HasMaxLength(20);
+
+            modelBuilder.Entity<Actor>()
+                .Property(actor => actor.LastName)
+                .HasMaxLength(20);
 
             modelBuilder.Entity<Regions>()
                 .Property(region => region.Id)
@@ -146,5 +161,7 @@ namespace HR_project.Models
                 .HasMany<Employees>(job => job.Employees)
                 .WithOne(emp => emp.Jobs);
         }
+
+
     }
 }

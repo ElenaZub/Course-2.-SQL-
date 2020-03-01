@@ -11,11 +11,6 @@ namespace Task2_HR
         {
             using (var context = new zzaContext())
             {
-                var customerOrder = context.Customer
-                    .Where(customer => customer.FirstName == "Elena")
-                    .Include(order => order.Order)
-                        .ThenInclude(orderItem => orderItem.Select)
-                    .FirstOrDefault();
             }
         }
     }

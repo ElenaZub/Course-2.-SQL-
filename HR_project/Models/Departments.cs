@@ -11,7 +11,6 @@ namespace HR_project.Models
 
         public int ManagersId { get; set; }
 
-        public int LocationsId { get; set; }
 
         public Locations Locations { get; set; }
 

@@ -24,6 +24,7 @@ namespace Movie_project.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Actor
             modelBuilder.Entity<Actor>()
                 .HasKey(actor => actor.Id);
 
@@ -39,129 +40,115 @@ namespace Movie_project.Models
                 .Property(actor => actor.LastName)
                 .HasMaxLength(20);
 
-            modelBuilder.Entity<Regions>()
-                .Property(region => region.Id)
-                .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Regions>()
-                .Property(region => region.Name)
-                .HasMaxLength(25);
-
-            modelBuilder.Entity<Regions>()
-                .HasMany<Countries>(region => region.Countries)
-                .WithOne(country => country.Regions);
-
-            modelBuilder.Entity<Countries>()
-                .HasKey(country => country.Id);
-
-            modelBuilder.Entity<Countries>()
-                .Property(country => country.Id)
-                .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Countries>()
-                .Property(country => country.Id)
-                .HasMaxLength(2);
-
-            modelBuilder.Entity<Countries>()
-                .Property(country => country.Name)
-                .HasMaxLength(40);
-
-            modelBuilder.Entity<Countries>()
-                .HasMany<Locations>(countries => countries.Locations)
-                .WithOne(location => location.Countries);
-
-            modelBuilder.Entity<Locations>()
-                .HasKey(location => location.Id);
-
-            modelBuilder.Entity<Locations>()
-                .Property(location => location.Id)
-                .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Locations>()
-                .Property(location => location.StreetAddress)
-                .HasMaxLength(25);
-
-            modelBuilder.Entity<Locations>()
-                .Property(location => location.PostalCode)
-                .HasMaxLength(12);
-
-            modelBuilder.Entity<Locations>()
-                .Property(location => location.City)
-                .HasMaxLength(30);
-
-            modelBuilder.Entity<Locations>()
-                .Property(location => location.StateProvince)
-                .HasMaxLength(12);
-
-            modelBuilder.Entity<Locations>()
-                .HasMany<Departments>(department => department.Departments)
-                .WithOne(location => location.Locations);
-
-            modelBuilder.Entity<Departments>()
-                .HasKey(departments => departments.Id);
-
-            modelBuilder.Entity<Departments>()
-                .Property(departments => departments.Id)
-                .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Departments>()
-                .Property(departments => departments.Name)
-                .HasMaxLength(30);
-
-            modelBuilder.Entity<Departments>()
-                .HasMany<Employees>(employees => employees.Employees)
-                .WithOne(departments => departments.Departments);
-
-            modelBuilder.Entity<Employees>()
-                .HasKey(employee => employee.Id);
-
-            modelBuilder.Entity<Employees>()
-                .Property(employee => employee.Id)
-                .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Employees>()
-                .Property(employee => employee.FirstName)
+            modelBuilder.Entity<Actor>()
+                .Property(actor => actor.LastName)
                 .HasMaxLength(20);
 
-            modelBuilder.Entity<Employees>()
-                .Property(employee => employee.LastName)
-                .HasMaxLength(25);
+            modelBuilder.Entity<Actor>()
+                .HasMany<MovieCast>(actor => actor.MovieCasts)
+                .WithOne(movieCast => movieCast.Actor)
+                .HasForeignKey(movieCast => movieCast.ActorId);
 
-            modelBuilder.Entity<Employees>()
-                .Property(employee => employee.Email)
-                .HasMaxLength(25);
+            //MovieCast
+            modelBuilder.Entity<MovieCast>()
+                .HasKey(movieCasr => new { movieCasr.ActorId, movieCasr.MovieId });
 
-            modelBuilder.Entity<Employees>()
-                .Property(employee => employee.PhoneNumber)
-                .HasMaxLength(20);
+            //Movie
+            modelBuilder.Entity<Movie>()
+                .HasKey(movie => movie.Id);
 
-            modelBuilder.Entity<JobHistories>()
-                .HasKey(jobHist => new { jobHist.EmployeesId, jobHist.StartDate });
-
-            modelBuilder.Entity<JobHistories>()
-                 .Property(jobHist => jobHist.JobId)
-                 .HasMaxLength(10);
-
-            modelBuilder.Entity<JobHistories>()
-                .HasMany<Employees>(jobHist => jobHist.Employees)
-                .WithOne(emp => emp.JobHistories);
-
-            modelBuilder.Entity<Jobs>()
-                .HasKey(jobs => jobs.Id);
-
-            modelBuilder.Entity<Jobs>()
-                .Property(jobs => jobs.Id)
-                .HasMaxLength(10);
-
-            modelBuilder.Entity<Jobs>()
-                .Property(jobs => jobs.Id)
+            modelBuilder.Entity<Movie>()
+                .Property(movie => movie.Id)
                 .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Jobs>()
-                .HasMany<Employees>(job => job.Employees)
-                .WithOne(emp => emp.Jobs);
+            modelBuilder.Entity<Movie>()
+                .Property(movie => movie.Title)
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Movie>()
+                .Property(movie => movie.Lang)
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Movie>()
+                .Property(movie => movie.RelCountry)
+                .HasMaxLength(5);
+
+            modelBuilder.Entity<Movie>()
+                .HasMany<MovieCast>(movie => movie.MovieCasts)
+                .WithOne(movieCast => movieCast.Movie)
+                .HasForeignKey(movieCast => movieCast.MovieId);
+
+            modelBuilder.Entity<Movie>()
+                .HasMany<MovieGenres>(movie => movie.MovieGenres)
+                .WithOne(movieGenres => movieGenres.Movies)
+                .HasForeignKey(movieCast => movieCast.MovieId);
+
+            modelBuilder.Entity<Movie>()
+                .HasMany<Rating>(movie => movie.Ratings)
+                .WithOne(rating => rating.Movie);
+
+            modelBuilder.Entity<Movie>()
+                .HasMany<MovieDirection>(movie => movie.MovieDirections)
+                .WithOne(moviedirectiont => moviedirectiont.Movie);
+
+            //MovieDirection
+            modelBuilder.Entity<MovieDirection>()
+                .HasKey(movieDirection => new { movieDirection.DirectorId, movieDirection.MovieId});
+
+            modelBuilder.Entity<MovieDirection>()
+                .HasOne<Director>(movieDirection => movieDirection.Director)
+                .WithMany(director => director.MovieDirections)
+                .HasForeignKey(movieDirection => movieDirection.MovieId);
+
+            //Director
+            modelBuilder.Entity<Director>()
+                .HasKey(director => director.Id);
+
+            modelBuilder.Entity<Director>()
+                .Property(director => director.Id)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Director>()
+                .Property(movie => movie.FirstName)
+                .HasMaxLength(20);
+
+            modelBuilder.Entity<Director>()
+                .Property(movie => movie.LasName)
+                .HasMaxLength(20);
+
+            modelBuilder.Entity<Director>()
+                .HasMany<MovieDirection>(director => director.MovieDirections)
+                .WithOne(moviedirectiont => moviedirectiont.Director)
+                .HasForeignKey(movieDirection => movieDirection.DirectorId);
+
+            //MovieGenres
+            modelBuilder.Entity<MovieGenres>()
+                .HasKey(movieGenres => new { movieGenres.MovieId, movieGenres.GenresId });
+
+            //Genres
+            modelBuilder.Entity<Genres>()
+                .HasKey(genres => genres.Id);
+
+            modelBuilder.Entity<Genres>()
+                .Property(genres => genres.Title)
+                .HasMaxLength(20);
+
+            //Rating
+            modelBuilder.Entity<Rating>()
+                .HasKey(rating => new { rating.MovieId, rating.ReviewerId });
+
+            //Reviewer
+            modelBuilder.Entity<Reviewer>()
+                .HasKey(reviewer => reviewer.Id);
+
+            modelBuilder.Entity<Reviewer>()
+                .Property(reviewer => reviewer.Name)
+                .HasMaxLength(20);
+
+            modelBuilder.Entity<Reviewer>()
+                .HasMany<Rating>(director => director.Ratings)
+                .WithOne(reviewer => reviewer.Reviewer)
+                .HasForeignKey(reviewer => reviewer.ReviewerId);
         }
-
-
     }
 }

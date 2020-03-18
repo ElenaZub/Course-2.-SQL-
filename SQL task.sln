@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL task", "SQL task\SQL task.csproj", "{F541CF15-04D9-459D-BE2E-81A78CF246DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQL task", "SQL task\SQL task.csproj", "{F541CF15-04D9-459D-BE2E-81A78CF246DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_project", "HR_project\HR_project.csproj", "{32291C41-BF89-4723-B322-5DE2C8945683}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Movie_project", "Movie_project\Movie_project.csproj", "{625517DC-AA44-4CDA-AA67-11C767990575}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{F541CF15-04D9-459D-BE2E-81A78CF246DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F541CF15-04D9-459D-BE2E-81A78CF246DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F541CF15-04D9-459D-BE2E-81A78CF246DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32291C41-BF89-4723-B322-5DE2C8945683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32291C41-BF89-4723-B322-5DE2C8945683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32291C41-BF89-4723-B322-5DE2C8945683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32291C41-BF89-4723-B322-5DE2C8945683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{625517DC-AA44-4CDA-AA67-11C767990575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625517DC-AA44-4CDA-AA67-11C767990575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625517DC-AA44-4CDA-AA67-11C767990575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625517DC-AA44-4CDA-AA67-11C767990575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

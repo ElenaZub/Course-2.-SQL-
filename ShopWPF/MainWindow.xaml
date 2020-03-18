@@ -1,0 +1,107 @@
+﻿<Window
+    x:Class="ShopWPF.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ShopWPF"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="clr-namespace:ShopDAL.Models;assembly=ShopDAL"
+    xmlns:view="clr-namespace:ShopWPF.View"
+    xmlns:viewModel="clr-namespace:ShopWPF.ViewModel"
+    Title="MainWindow"
+    Width="800"
+    Height="300"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type model:Car}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="0.5*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Width="75"
+                    Height="50"
+                    Margin="5"
+                    Source="{Binding Image}" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Content="{Binding Model}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Content="{Binding Make}" />
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Content="Model" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Content="Make" />
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.15*" />
+            <ColumnDefinition Width="0.15*" />
+            <ColumnDefinition Width="0.15*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.15*" />
+        </Grid.RowDefinitions>
+
+        <ListView
+            x:Name="CarListView"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            ItemsSource="{Binding CarList}"
+            SelectedItem="{Binding SelectedCar}" />
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5"
+            Command="{Binding DeleteCommand}"
+            Content="Delete" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="5"
+            Command="{Binding AddDefaultValueCommand}"
+            Content="Add Auto" />
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="2"
+            Margin="5"
+            Command="{Binding UpdateCommand}"
+            Content="Update" />
+
+        <view:MainWindowView
+            Grid.RowSpan="2"
+            Grid.Column="4"
+            DataContext="{Binding SelectedCar}" />
+        <!--  DataContext="{Binding ElementName=CarListView, Path=SelectedItem}"/>  -->
+    </Grid>
+</Window>

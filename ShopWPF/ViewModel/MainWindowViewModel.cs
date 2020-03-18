@@ -55,33 +55,40 @@ namespace ShopWPF.ViewModel
 
         public ICommand DeleteCommand { get; set; }
 
-        public ICommand DefaultValueCommand { get; set; }
+        public ICommand AddDefaultValueCommand { get; set; } 
 
-        public ICommand SaveCommand { get; set; }  
+        public ICommand UpdateCommand { get; set; }  
 
         public MainWindowViewModel()
         {
             this.unitOfWork = new UnitOfWork();
-            this.CarList = new ObservableCollection<Car>();
-            this.CarList = Helper.GetCollection();
+            this.CarList = new ObservableCollection<Car>(this.unitOfWork.CarRepository.Get());
 
-            //foreach (var item in CarList)
-            //{
-            //    this.unitOfWork.CarRepository.Add(item);
-            //}
-            //this.unitOfWork.CarRepository.Save();
-
-            this.DeleteCommand = new RelayCommand(DeleteExecute, CanExecute);
-            this.DefaultValueCommand = new RelayCommand(DefaultValueCommandExecute, CanExecute);
-            this.SaveCommand = new RelayCommand(SaveCommandExecute, SaveCanExecute);
+            this.DeleteCommand = new RelayCommand(this.DeleteExecute, this.CanExecute);
+            this.AddDefaultValueCommand = new RelayCommand(this.AddDefaultValueCommandExecute, this.AddDefaultCanExecute);
+            this.UpdateCommand = new RelayCommand(this.UpdateCommandExecute, this.UpdateCanExecute);
         }
 
-        private bool SaveCanExecute(object obj)
+        private bool AddDefaultCanExecute(object obj)
         {
             return true;
         }
 
-        private void SaveCommandExecute(object obj)
+        private bool UpdateCanExecute(object obj)
+        {
+            if (this.SelectedCar == null)
+                return false;
+            else
+                return true;
+        }
+
+        private void UpdateCommandExecute(object obj)
+        {
+            this.unitOfWork.CarRepository.Update(this.SelectedCar);
+            this.unitOfWork.Save();
+        }
+
+        private void AddDefaultValueCommandExecute(object obj)
         {
             var car = new Car
             {
@@ -94,21 +101,10 @@ namespace ShopWPF.ViewModel
                 Type = DefaultValues.Type,
                 Color = DefaultValues.Color
             };
-            this.carList.Add(car);
-            this.unitOfWork.CarRepository.Add(car);
-            this.unitOfWork.CarRepository.Save();
-        }
 
-        private void DefaultValueCommandExecute(object obj)
-        {
-            this.SelectedCar.Model = DefaultValues.Model;
-            this.SelectedCar.Make = DefaultValues.Make;
-            this.SelectedCar.Image = DefaultValues.Image;
-            this.SelectedCar.Cost = DefaultValues.Cost;
-            this.SelectedCar.Country = DefaultValues.Country;
-            this.SelectedCar.Size = DefaultValues.Size;
-            this.SelectedCar.Type = DefaultValues.Type;
-            this.SelectedCar.Color = DefaultValues.Color;
+            this.unitOfWork.CarRepository.Add(car);
+            this.carList.Add(car);
+            this.unitOfWork.Save();
         }
 
         private bool CanExecute(object obj)

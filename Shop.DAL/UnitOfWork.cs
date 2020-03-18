@@ -18,7 +18,7 @@ namespace ShopDAL
             get
             {
                 if (this.carRepository == null)
-                    this.carRepository = new GenericRepository<Car>(context);
+                    this.carRepository = new GenericRepository<Car>(this.context);
 
                 return this.carRepository;
             }

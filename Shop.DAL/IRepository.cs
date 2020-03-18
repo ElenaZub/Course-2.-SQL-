@@ -20,6 +20,5 @@ namespace Shop.DAL
         void Add(TEntity entity);
 
         void Save();
-        IEnumerable<TEntity> Get(System.Linq.Expressions.Expression<Func<TEntity, bool>> filter = null, Func<System.Linq.IQueryable<TEntity>, System.Linq.IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
     }
 }

@@ -21,7 +21,7 @@ namespace Shop.DAL
 
         public IEnumerable<TEntity> Get()
         {
-            IQueryable<TEntity> query = dbSet;
+            IQueryable<TEntity> query = this.dbSet;
 
             return query.ToList();
         }
@@ -59,6 +59,7 @@ namespace Shop.DAL
 
             this.disposed = true;
         }
+
         public TEntity GetById(int entityId)
         {
             return this.dbSet.Find(entityId);
@@ -73,11 +74,6 @@ namespace Shop.DAL
         {
             this.dbSet.Attach(entity);
             this.context.Entry(entity).State = EntityState.Modified;
-        }
-
-        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
-        {
-            throw new NotImplementedException();
         }
     }
 }

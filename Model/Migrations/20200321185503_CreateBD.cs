@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Model.Migrations
 {
-    public partial class createBB : Migration
+    public partial class CreateBD : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -237,8 +237,8 @@ namespace Model.Migrations
                 columns: new[] { "customer_id", "city", "email", "first_name", "last_name", "phone", "state", "street", "zip_code" },
                 values: new object[,]
                 {
-                    { 1, "Kharkiv", "klass.com", "Ivan", "Ivanov", "0987654", "UK", "23 Seprnya", "8976" },
-                    { 2, "Kharkiv", "klass.com", "Petr", "Petrov", "0987654", "UK", "23 Seprnya", "8976" }
+                    { 1, "Kharkiv", "ivan@i.van", "Ivan", "Ivanov", "0987654", "UK", "23 Seprnya", "8976" },
+                    { 2, "Kharkiv", "pet@r.ov", "Petr", "Petrov", "0987654", "UK", "23 Seprnya", "8976" }
                 });
 
             migrationBuilder.InsertData(
@@ -255,8 +255,8 @@ namespace Model.Migrations
                 columns: new[] { "product_id", "brand_id", "category_id", "list_price", "model_year", "product_name" },
                 values: new object[,]
                 {
-                    { 1, 2, 1, 20m, 2015, "Electrocar" },
-                    { 2, 2, 1, 20m, 2015, "Car" }
+                    { 1, 2, 1, 20m, 2015, "TT" },
+                    { 2, 1, 2, 20m, 2020, "GS750" }
                 });
 
             migrationBuilder.InsertData(
@@ -264,8 +264,9 @@ namespace Model.Migrations
                 columns: new[] { "staff_id", "active", "email", "first_name", "last_name", "manager_id", "phone", "store_id" },
                 values: new object[,]
                 {
-                    { 1, true, "e.zub", "Elena", "Zub", null, "02", 1 },
-                    { 2, false, "e.reshetilo", "Oleg", "Reshetilo", null, "04", 2 }
+                    { 1, true, "e.zub", "Elena", "Zub", null, "0987577586245", 1 },
+                    { 2, false, "e.reshetilo", "Oleg", "Reshetilo", null, "7756996595", 2 },
+                    { 3, false, "e.borisov", "Boris", "Borisov", null, "098756344245", 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -273,8 +274,16 @@ namespace Model.Migrations
                 columns: new[] { "order_id", "customer_id", "order_date", "required_date", "shipped_date", "staff_id", "order_status", "store_id" },
                 values: new object[,]
                 {
-                    { 1, 1, null, null, null, 1, "go", 1 },
-                    { 2, 2, null, null, null, 2, "done", 2 }
+                    { 1, 1, new DateTime(2020, 3, 21, 20, 55, 3, 194, DateTimeKind.Local).AddTicks(5159), new DateTime(2020, 3, 21, 20, 55, 3, 196, DateTimeKind.Local).AddTicks(8206), new DateTime(2020, 3, 21, 20, 55, 3, 196, DateTimeKind.Local).AddTicks(8779), 1, "Wait delivery", 1 },
+                    { 4, 2, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(956), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(958), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(961), 1, "In processing", 2 },
+                    { 9, 2, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(999), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1001), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1004), 1, "Wait delivery", 2 },
+                    { 2, 2, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(876), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(898), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(910), 2, "Delivered", 2 },
+                    { 3, 1, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(946), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(949), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(952), 2, "In processing", 2 },
+                    { 5, 1, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(965), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(967), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(970), 2, "Delivered", 2 },
+                    { 6, 2, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(973), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(976), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(978), 2, "In processing", 2 },
+                    { 7, 2, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(981), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(984), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(987), 2, "done", 2 },
+                    { 8, 2, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(990), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(993), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(996), 2, "done", 2 },
+                    { 10, 2, new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1007), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1009), new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1012), 2, "Wait delivery", 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -282,19 +291,28 @@ namespace Model.Migrations
                 columns: new[] { "store_id", "product_id", "quantity" },
                 values: new object[,]
                 {
-                    { 1, 1, 4 },
-                    { 2, 2, 4 }
+                    { 1, 1, 3 },
+                    { 2, 1, 14 },
+                    { 1, 2, 12 },
+                    { 2, 2, 7 }
                 });
 
             migrationBuilder.InsertData(
                 table: "order_items",
                 columns: new[] { "order_id", "product_id", "discount", "list_price", "quantity" },
-                values: new object[] { 1, 1, 1m, 20m, 5 });
-
-            migrationBuilder.InsertData(
-                table: "order_items",
-                columns: new[] { "order_id", "product_id", "discount", "list_price", "quantity" },
-                values: new object[] { 2, 2, 3m, 30m, 10 });
+                values: new object[,]
+                {
+                    { 1, 1, 120m, 20m, 5 },
+                    { 4, 1, 3m, 30m, 10 },
+                    { 9, 2, 17m, 30m, 10 },
+                    { 2, 2, 3m, 30m, 10 },
+                    { 3, 2, 3m, 30m, 10 },
+                    { 5, 2, 39m, 30m, 10 },
+                    { 6, 1, 3m, 30m, 10 },
+                    { 7, 2, 31m, 27m, 10 },
+                    { 8, 2, 32m, 30m, 10 },
+                    { 10, 2, 10m, 30m, 10 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_order_customer_id",

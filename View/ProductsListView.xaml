@@ -1,0 +1,86 @@
+﻿<UserControl
+    x:Class="View.ProductsListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:ViewModel;assembly=ViewModel"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.DataContext>
+        <viewModel:ProductsListViewModel />
+    </UserControl.DataContext>
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ListView
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            ItemsSource="{Binding ProductsList}"
+            SelectedItem="{Binding SelectedProduct}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Blue" BorderThickness="2">
+                        <Grid Margin="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="Product:" />
+                            <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding Name}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="ModelYear:" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding ModelYear}" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Text="ListPrice:" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding ListPrice}" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <local:ProductDetailView
+            Grid.Row="0"
+            Grid.Column="1"
+            DataContext="{Binding ProductDetailViewModel}" />
+        <local:StocksListView
+            Grid.Row="1"
+            Grid.Column="1"
+            DataContext="{Binding StocksListViewModel}" />
+    </Grid>
+</UserControl>

@@ -66,7 +66,7 @@ namespace Model
                     FirstName = "Elena", 
                     LastName = "Zub",
                     Email = "e.zub",
-                    Phone = "02",
+                    Phone = "0987577586245",
                     Active = true, 
                     StoreId = 1
                 }
@@ -76,7 +76,17 @@ namespace Model
                     FirstName = "Oleg",
                     LastName = "Reshetilo",
                     Email = "e.reshetilo",
-                    Phone = "04",
+                    Phone = "7756996595",
+                    Active = false,
+                    StoreId = 2
+                }
+                , new Staff
+                {
+                    Id = 3,
+                    FirstName = "Boris",
+                    LastName = "Borisov",
+                    Email = "e.borisov",
+                    Phone = "098756344245",
                     Active = false,
                     StoreId = 2
                 });
@@ -123,20 +133,106 @@ namespace Model
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Order>()
-                .HasData(new Order
+                .HasData(new Order()
                 {
                     Id = 1,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
                     CustomerId = 1,
-                    Status = "go",
+                    Status = "Wait delivery",
                     StoreId = 1,
                     StaffId = 1
                 }
-                , new Order
+                , new Order()
                 {
                     Id = 2,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    CustomerId = 2,
+                    Status = "Delivered",
+                    StoreId = 2,
+                    StaffId = 2
+                }, new Order()
+                {
+                    Id = 3,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    CustomerId = 1,
+                    Status = "In processing",
+                    StoreId = 2,
+                    StaffId = 2
+                }, new Order()
+                {
+                    Id = 4,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    CustomerId = 2,
+                    Status = "In processing",
+                    StoreId = 2,
+                    StaffId = 1
+                }, new Order
+                {
+                    Id = 5,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    CustomerId = 1,
+                    Status = "Delivered",
+                    StoreId = 2,
+                    StaffId = 2
+                }, new Order()
+                {
+                    Id = 6,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    CustomerId = 2,
+                    Status = "In processing",
+                    StoreId = 2,
+                    StaffId = 2
+                }, new Order()
+                {
+                    Id = 7,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
                     CustomerId = 2,
                     Status = "done",
                     StoreId = 2,
+                    StaffId = 2
+                }, new Order()
+                {
+                    Id = 8,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    CustomerId = 2,
+                    Status = "done",
+                    StoreId = 2,
+                    StaffId = 2
+                }, new Order()
+                {
+                    Id = 9,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    CustomerId = 2,
+                    Status = "Wait delivery",
+                    StoreId = 2,
+                    StaffId = 1
+                }, new Order()
+                {
+                    Id = 10,
+                    Date = DateTime.Now,
+                    RequiredDate = DateTime.Now,
+                    ShippedDate = DateTime.Now,
+                    CustomerId = 2,
+                    Status = "Wait delivery",
+                    StoreId = 1,
                     StaffId = 2
                 });
 
@@ -178,21 +274,77 @@ namespace Model
                 .HasForeignKey(oi => oi.ProductId);
 
             modelBuilder.Entity<OrderItem>()
-                .HasData(new OrderItem
+                .HasData(new OrderItem()
                 {
                     OrderId = 1,
                     ProductId = 1,
                     Quantity = 5,
                     ListPrice = 20,
-                    Discount = 1
+                    Discount = 120
                 }
-                , new OrderItem
+                , new OrderItem()
                 {
                     OrderId = 2,
                     ProductId = 2,
                     Quantity = 10,
                     ListPrice = 30,
                     Discount = 3
+                }, new OrderItem()
+                {
+                    OrderId = 3,
+                    ProductId = 2,
+                    Quantity = 10,
+                    ListPrice = 30,
+                    Discount = 3
+                }, new OrderItem()
+                {
+                    OrderId = 4,
+                    ProductId = 1,
+                    Quantity = 10,
+                    ListPrice = 30,
+                    Discount = 3
+                }, new OrderItem()
+                {
+                    OrderId = 5,
+                    ProductId = 2,
+                    Quantity = 10,
+                    ListPrice = 30,
+                    Discount = 39
+                }, new OrderItem()
+                {
+                    OrderId = 6,
+                    ProductId = 1,
+                    Quantity = 10,
+                    ListPrice = 30,
+                    Discount = 3
+                }, new OrderItem()
+                {
+                    OrderId = 7,
+                    ProductId = 2,
+                    Quantity = 10,
+                    ListPrice = 27,
+                    Discount = 31
+                }, new OrderItem()
+                {
+                    OrderId = 8,
+                    ProductId = 2,
+                    Quantity = 10,
+                    ListPrice = 30,
+                    Discount = 32
+                }, new OrderItem()
+                {
+                    OrderId = 9,
+                    ProductId = 2,
+                    Quantity = 10,
+                    ListPrice = 30,
+                    Discount = 17
+                }, new OrderItem()
+                {
+                    OrderId = 10,
+                    ProductId = 2,
+                    Quantity = 10,
+                    ListPrice = 30,
+                    Discount = 10
                 });
 
             //Store
@@ -302,7 +454,7 @@ namespace Model
                     FirstName = "Ivan",
                     LastName = "Ivanov",
                     Phone = "0987654",
-                    Email = "klass.com",
+                    Email = "ivan@i.van",
                     Street = "23 Seprnya",
                     City = "Kharkiv",
                     State = "UK",
@@ -314,7 +466,7 @@ namespace Model
                     FirstName = "Petr",
                     LastName = "Petrov",
                     Phone = "0987654",
-                    Email = "klass.com",
+                    Email = "pet@r.ov",
                     Street = "23 Seprnya",
                     City = "Kharkiv",
                     State = "UK",
@@ -355,13 +507,25 @@ namespace Model
                 {
                     StoreId = 1,
                     ProductId =1,
-                    Quantity = 4
+                    Quantity = 3
+                }
+                , new Stock
+                {
+                    StoreId = 1,
+                    ProductId = 2,
+                    Quantity = 12
+                }
+                , new Stock
+                {
+                    StoreId = 2,
+                    ProductId = 1,
+                    Quantity = 14
                 }
                 , new Stock
                 {
                     StoreId = 2,
                     ProductId = 2,
-                    Quantity = 4
+                    Quantity = 7
                 });
 
             //Product
@@ -396,7 +560,7 @@ namespace Model
                 .HasData(new Product
                 {
                     Id = 1,
-                    Name = "Electrocar",
+                    Name = "TT",
                     BrandId = 2,
                     CategoryId = 1,
                     ModelYear = 2015,
@@ -405,10 +569,10 @@ namespace Model
                 , new Product
                 {
                     Id = 2,
-                    Name = "Car",
-                    BrandId = 2,
-                    CategoryId = 1,
-                    ModelYear = 2015,
+                    Name = "GS750",
+                    BrandId = 1,
+                    CategoryId = 2,
+                    ModelYear = 2020,
                     ListPrice = 20
                 });
 

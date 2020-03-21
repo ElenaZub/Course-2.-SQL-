@@ -15,5 +15,10 @@ namespace Model.Entity
         public string ZipCode { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.FirstName} {this.LastName}";
+        }
     }
 }

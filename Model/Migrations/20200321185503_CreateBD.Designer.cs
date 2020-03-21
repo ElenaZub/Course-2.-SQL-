@@ -10,8 +10,8 @@ using Model;
 namespace Model.Migrations
 {
     [DbContext(typeof(ModelDBContext))]
-    [Migration("20200314125824_createBB")]
-    partial class createBB
+    [Migration("20200321185503_CreateBD")]
+    partial class CreateBD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -128,7 +128,7 @@ namespace Model.Migrations
                         {
                             Id = 1,
                             City = "Kharkiv",
-                            Email = "klass.com",
+                            Email = "ivan@i.van",
                             FirstName = "Ivan",
                             LastName = "Ivanov",
                             Phone = "0987654",
@@ -140,7 +140,7 @@ namespace Model.Migrations
                         {
                             Id = 2,
                             City = "Kharkiv",
-                            Email = "klass.com",
+                            Email = "pet@r.ov",
                             FirstName = "Petr",
                             LastName = "Petrov",
                             Phone = "0987654",
@@ -201,17 +201,111 @@ namespace Model.Migrations
                         {
                             Id = 1,
                             CustomerId = 1,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 194, DateTimeKind.Local).AddTicks(5159),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 196, DateTimeKind.Local).AddTicks(8206),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 196, DateTimeKind.Local).AddTicks(8779),
                             StaffId = 1,
-                            Status = "go",
+                            Status = "Wait delivery",
                             StoreId = 1
                         },
                         new
                         {
                             Id = 2,
                             CustomerId = 2,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(876),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(898),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(910),
+                            StaffId = 2,
+                            Status = "Delivered",
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CustomerId = 1,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(946),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(949),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(952),
+                            StaffId = 2,
+                            Status = "In processing",
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CustomerId = 2,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(956),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(958),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(961),
+                            StaffId = 1,
+                            Status = "In processing",
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CustomerId = 1,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(965),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(967),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(970),
+                            StaffId = 2,
+                            Status = "Delivered",
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CustomerId = 2,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(973),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(976),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(978),
+                            StaffId = 2,
+                            Status = "In processing",
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CustomerId = 2,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(981),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(984),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(987),
                             StaffId = 2,
                             Status = "done",
                             StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CustomerId = 2,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(990),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(993),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(996),
+                            StaffId = 2,
+                            Status = "done",
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CustomerId = 2,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(999),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1001),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1004),
+                            StaffId = 1,
+                            Status = "Wait delivery",
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CustomerId = 2,
+                            Date = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1007),
+                            RequiredDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1009),
+                            ShippedDate = new DateTime(2020, 3, 21, 20, 55, 3, 197, DateTimeKind.Local).AddTicks(1012),
+                            StaffId = 2,
+                            Status = "Wait delivery",
+                            StoreId = 1
                         });
                 });
 
@@ -248,7 +342,7 @@ namespace Model.Migrations
                         {
                             OrderId = 1,
                             ProductId = 1,
-                            Discount = 1m,
+                            Discount = 120m,
                             ListPrice = 20m,
                             Quantity = 5
                         },
@@ -257,6 +351,70 @@ namespace Model.Migrations
                             OrderId = 2,
                             ProductId = 2,
                             Discount = 3m,
+                            ListPrice = 30m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 3,
+                            ProductId = 2,
+                            Discount = 3m,
+                            ListPrice = 30m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 4,
+                            ProductId = 1,
+                            Discount = 3m,
+                            ListPrice = 30m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 5,
+                            ProductId = 2,
+                            Discount = 39m,
+                            ListPrice = 30m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 6,
+                            ProductId = 1,
+                            Discount = 3m,
+                            ListPrice = 30m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 7,
+                            ProductId = 2,
+                            Discount = 31m,
+                            ListPrice = 27m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 8,
+                            ProductId = 2,
+                            Discount = 32m,
+                            ListPrice = 30m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 9,
+                            ProductId = 2,
+                            Discount = 17m,
+                            ListPrice = 30m,
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            OrderId = 10,
+                            ProductId = 2,
+                            Discount = 10m,
                             ListPrice = 30m,
                             Quantity = 10
                         });
@@ -306,16 +464,16 @@ namespace Model.Migrations
                             CategoryId = 1,
                             ListPrice = 20m,
                             ModelYear = 2015,
-                            Name = "Electrocar"
+                            Name = "TT"
                         },
                         new
                         {
                             Id = 2,
-                            BrandId = 2,
-                            CategoryId = 1,
+                            BrandId = 1,
+                            CategoryId = 2,
                             ListPrice = 20m,
-                            ModelYear = 2015,
-                            Name = "Car"
+                            ModelYear = 2020,
+                            Name = "GS750"
                         });
                 });
 
@@ -369,7 +527,7 @@ namespace Model.Migrations
                             Email = "e.zub",
                             FirstName = "Elena",
                             LastName = "Zub",
-                            Phone = "02",
+                            Phone = "0987577586245",
                             StoreId = 1
                         },
                         new
@@ -379,7 +537,17 @@ namespace Model.Migrations
                             Email = "e.reshetilo",
                             FirstName = "Oleg",
                             LastName = "Reshetilo",
-                            Phone = "04",
+                            Phone = "7756996595",
+                            StoreId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Active = false,
+                            Email = "e.borisov",
+                            FirstName = "Boris",
+                            LastName = "Borisov",
+                            Phone = "098756344245",
                             StoreId = 2
                         });
                 });
@@ -409,13 +577,25 @@ namespace Model.Migrations
                         {
                             StoreId = 1,
                             ProductId = 1,
-                            Quantity = 4
+                            Quantity = 3
+                        },
+                        new
+                        {
+                            StoreId = 1,
+                            ProductId = 2,
+                            Quantity = 12
+                        },
+                        new
+                        {
+                            StoreId = 2,
+                            ProductId = 1,
+                            Quantity = 14
                         },
                         new
                         {
                             StoreId = 2,
                             ProductId = 2,
-                            Quantity = 4
+                            Quantity = 7
                         });
                 });
 

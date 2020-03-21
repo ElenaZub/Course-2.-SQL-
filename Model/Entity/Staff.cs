@@ -18,5 +18,11 @@ namespace Model.Entity
         public Store Store { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+
+
+        public override string ToString()
+        {
+            return $"{this.FirstName} {this.LastName}";
+        }
     }
 }

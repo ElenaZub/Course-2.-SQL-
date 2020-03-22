@@ -1,0 +1,99 @@
+﻿<UserControl
+    x:Class="View.OrderDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <Grid DataContext="{Binding SelectedOrder}">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Text="Date:" />
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            FontWeight="Bold"
+            Text="{Binding StringFormat=yyyy/MM/dd, Path=Date}" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Text="Required date:" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            FontWeight="Bold"
+            Text="{Binding StringFormat=yyyy/MM/dd, Path=RequiredDate}" />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Text="ShippedDate: " />
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            FontWeight="Bold"
+            Text="{Binding StringFormat=yyyy/MM/dd, Path=ShippedDate}" />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Text="Store: " />
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            FontWeight="Bold"
+            Text="{Binding Store.Name}" />
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="0"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Text="Staff: " />
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            Margin="5,5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            FontWeight="Bold"
+            Text="{Binding Staff}" />
+    </Grid>
+</UserControl>

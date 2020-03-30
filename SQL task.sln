@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL task", "SQL task\SQL task.csproj", "{F541CF15-04D9-459D-BE2E-81A78CF246DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DALStudent", "DAL.Student\DALStudent.csproj", "{52B727B7-DE5C-4734-ABA2-01D1ADA25503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{103EF633-8FF8-4690-A0B6-9F084EBAB9E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{F541CF15-04D9-459D-BE2E-81A78CF246DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F541CF15-04D9-459D-BE2E-81A78CF246DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F541CF15-04D9-459D-BE2E-81A78CF246DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52B727B7-DE5C-4734-ABA2-01D1ADA25503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52B727B7-DE5C-4734-ABA2-01D1ADA25503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52B727B7-DE5C-4734-ABA2-01D1ADA25503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52B727B7-DE5C-4734-ABA2-01D1ADA25503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{103EF633-8FF8-4690-A0B6-9F084EBAB9E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{103EF633-8FF8-4690-A0B6-9F084EBAB9E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{103EF633-8FF8-4690-A0B6-9F084EBAB9E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{103EF633-8FF8-4690-A0B6-9F084EBAB9E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

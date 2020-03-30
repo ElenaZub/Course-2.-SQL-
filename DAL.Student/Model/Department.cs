@@ -7,8 +7,13 @@ namespace DALStudent.Model
     public class Department
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Id} - {this.Name}";
+        }
     }
 }

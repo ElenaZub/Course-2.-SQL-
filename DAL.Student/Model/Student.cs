@@ -11,5 +11,10 @@ namespace DALStudent.Model
         public string LastName { get; set; }
 
         public virtual Course Course { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Id} - {this.FirstName} {this.LastName}";
+        }
     }
 }

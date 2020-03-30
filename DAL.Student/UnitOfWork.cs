@@ -7,7 +7,7 @@ namespace DALStudent
 {
     public class UnitOfWork : IDisposable
     {
-        private UniversityDbContext context = new UniversityDbContext();
+        private UniversityDBContext context = new UniversityDBContext();
         private GenericRepository<Department> departmentRepository;
         private GenericRepository<Course> courseRepository;
         private GenericRepository<Student> studentRepository;

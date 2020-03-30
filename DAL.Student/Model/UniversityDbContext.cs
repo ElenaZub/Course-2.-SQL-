@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DALStudent.Model
 {
-    public class UniversityDbContext : DbContext
+    public class UniversityDBContext : DbContext
     {
         public DbSet<Course> Courses { get; set; }
         public DbSet<Department> Departments { get; set; }

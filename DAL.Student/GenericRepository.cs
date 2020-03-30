@@ -10,20 +10,15 @@ namespace DALStudent
 {
     public class GenericRepository<TEntity> where TEntity : class
     {
-        internal UniversityDbContext context;
+        internal UniversityDBContext context;
         internal DbSet<TEntity> dbSet;
 
-        public GenericRepository()
+        public GenericRepository(UniversityDBContext context)
         {
-            this.context = new UniversityDbContext();
+            this.context = context;
             this.dbSet = this.context.Set<TEntity>();
         }
 
-        public GenericRepository(UniversityDbContext context)
-        {
-            this.context = context;
-            this.dbSet = context.Set<TEntity>();
-        }
 
         public virtual IEnumerable<TEntity> Get(
             Expression<Func<TEntity, bool>> filter = null,

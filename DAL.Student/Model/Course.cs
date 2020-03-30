@@ -10,5 +10,10 @@ namespace DALStudent.Model
         public string Name { get; set; }
 
         public virtual ICollection<Student> Students { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.Id} - {this.Name}";
+        }
     }
 }

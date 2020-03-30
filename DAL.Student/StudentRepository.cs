@@ -10,10 +10,10 @@ namespace DAL.Student
 {
     public class StudentRepository : IStudentRepository, IDisposable
     {
-        private UniversityDbContext context;
+        private UniversityDBContext context;
         private bool disposed = false;
 
-        public StudentRepository(UniversityDbContext context)
+        public StudentRepository(UniversityDBContext context)
         {
             this.context = context;
         }
